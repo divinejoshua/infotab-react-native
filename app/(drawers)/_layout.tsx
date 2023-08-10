@@ -55,19 +55,20 @@ export default function TabLayout() {
       drawerContent={(props) =>(
         <CustomDrawerContent {...props}/>
       )}
-      screenOptions={({ navigation }) => ({
+      screenOptions={({ navigation, route }) => ({
         drawerActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerLeft: (props) =>
         ( 
           <TouchableOpacity onPress={() =>navigation.toggleDrawer()}>
-            <Image 
+            {/* <Image 
               source={require("../../assets/images/profile.jpg")} 
               resizeMode='contain' 
               style={{width:30, height:30, marginLeft: 20, borderRadius:100}}
               
-              />
+              /> */}
             </TouchableOpacity>
         ),
+        headerShown : false,
         headerShadowVisible: false,
         drawerStyle: {
           width: '70%', //Set Drawer width
