@@ -45,10 +45,7 @@ export default function BottomSheet({isOpen, setIsOpen} : {isOpen : boolean, set
 
 
   return (
-
-    
     <BottomSheetModalProvider>
-
             {/* Bottom sheet handler button  */}
             <TouchableOpacity style={[styles.presentButton]} onPress={() =>handlePresentModal()}>
                 <Text style={styles.buttonText}>Open bottom sheet </Text>
@@ -61,7 +58,7 @@ export default function BottomSheet({isOpen, setIsOpen} : {isOpen : boolean, set
                 ref={bottomSheetModalRef}
                 index={1}
                 snapPoints={snapPoints}
-                backgroundStyle={{ borderRadius: 50, backgroundColor: backgroundColor }}
+                backgroundStyle={{ borderRadius: 10, backgroundColor: backgroundColor }}
                 handleIndicatorStyle={{ backgroundColor: borderColor }} // Customize the indicator style
                 onDismiss={() => setIsOpen(false)}
             >

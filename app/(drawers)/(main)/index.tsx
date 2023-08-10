@@ -1,4 +1,4 @@
-import { Button, Image, SafeAreaView, StyleSheet, TouchableOpacity, useColorScheme } from 'react-native';
+import { Button, Image, Pressable, SafeAreaView, StyleSheet, TouchableOpacity, useColorScheme } from 'react-native';
 
 import EditScreenInfo from '../../../components/EditScreenInfo';
 import { Text, View } from '../../../components/Themed';
@@ -58,12 +58,11 @@ export default function TabOneScreen() {
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <EditScreenInfo path="app/(tabs)/index.tsx" />
 
-
       {/* Bottom sheet  */}
       {/* Pass the values of the bottom sheet if it is open or not  */}
 
       {/* Overlay  */}
-      {isOpenBottomSheet ??  <View style={styles.overlay}><Text>hey</Text></View>}
+      <View style={[ isOpenBottomSheet ? styles.overlay : {}]}></View>
      
 
       <BottomSheet isOpen={isOpenBottomSheet} setIsOpen={setIsOpenBottomSheet}/>     
