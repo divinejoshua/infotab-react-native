@@ -15,9 +15,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
  */
 
-// const Drawer = createDrawerNavigator();
-
-
 
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
