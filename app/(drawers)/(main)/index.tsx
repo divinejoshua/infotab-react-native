@@ -1,10 +1,15 @@
-import { Image, SafeAreaView, StyleSheet, TouchableOpacity, useColorScheme } from 'react-native';
+import { Button, Image, SafeAreaView, StyleSheet, TouchableOpacity, useColorScheme } from 'react-native';
 
 import EditScreenInfo from '../../../components/EditScreenInfo';
 import { Text, View } from '../../../components/Themed';
 import Colors from '../../../constants/Colors';
 import { Drawer } from 'expo-router/drawer';
 import { useNavigation,  } from '@react-navigation/native';
+
+
+import { useRef, useState } from 'react';
+import BottomSheet from '../../../components/BottomSheet';
+
 
 export default function TabOneScreen() {
 
@@ -14,6 +19,10 @@ export default function TabOneScreen() {
 
   // Navigation 
    const navigation = useNavigation();
+
+
+
+
 
    return (
     <SafeAreaView style={[styles.container, {backgroundColor: backgroundColor, flex: 1,}]} > 
@@ -41,6 +50,12 @@ export default function TabOneScreen() {
       <Text style={styles.title}>Tab One</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <EditScreenInfo path="app/(tabs)/index.tsx" />
+
+
+      {/* Bottom sheet  */}
+      <BottomSheet/>      
+
+      
     </SafeAreaView>
   );
 }
