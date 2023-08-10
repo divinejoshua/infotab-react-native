@@ -57,17 +57,6 @@ export default function TabLayout() {
       )}
       screenOptions={({ navigation, route }) => ({
         drawerActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerLeft: (props) =>
-        ( 
-          <TouchableOpacity onPress={() =>navigation.toggleDrawer()}>
-            {/* <Image 
-              source={require("../../assets/images/profile.jpg")} 
-              resizeMode='contain' 
-              style={{width:30, height:30, marginLeft: 20, borderRadius:100}}
-              
-              /> */}
-            </TouchableOpacity>
-        ),
         headerShown : false,
         headerShadowVisible: false,
         drawerStyle: {

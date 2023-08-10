@@ -21,15 +21,16 @@ export default function TabOneScreen() {
     {/* Drawer options  */}
       <Drawer.Screen
         options={{
+          // Open Drawer on press
           headerLeft: () => (
               //@ts-ignore: true
             <TouchableOpacity onPress={()=> navigation.toggleDrawer()}>
-            <Image 
-              source={require("../../../assets/images/profile.jpg")} 
-              resizeMode='contain' 
-              style={{width:30, height:30, marginLeft: 20, borderRadius:100}}
-              
-              />
+              <Image 
+                source={require("../../../assets/images/profile.jpg")} 
+                resizeMode='contain' 
+                style={{width:30, height:30, marginLeft: 20, borderRadius:100}}
+                
+                />
             </TouchableOpacity>
           ),
           headerTitle: "Home",

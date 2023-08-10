@@ -31,34 +31,39 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         headerShown:true,
+        headerShadowVisible:false,
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        headerRight: () => (
+          <Link href="/modal" asChild>
+            <Pressable>
+              {({ pressed }) => (
+                <FontAwesome
+                  name="cog"
+                  size={20}
+                  color={Colors[colorScheme ?? 'light'].text}
+                  style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                />
+              )}
+            </Pressable>
+          </Link>
+        ),
+
       }}>
+
+      {/* Tab screens  */}
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="cog"
-                    size={20}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
+          title: 'Home',
+          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
+          
         }}
       />
       <Tabs.Screen
         name="profile"
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'Profile',
+          tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
         }}
       />
     </Tabs>
