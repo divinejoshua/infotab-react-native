@@ -73,10 +73,11 @@ export default function TabLayout() {
             drawerIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
           }}
         />
+     {/* Settings  */}
       <Drawer.Screen
-          name="two"
+          name="settings"
           options={{
-            title: 'Tab Two',
+            title: 'Settings',
             drawerIcon: ({ color }) => <TabBarIcon name="cog" color={color} />,
           }}
         />
