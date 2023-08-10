@@ -33,7 +33,22 @@
       "expo-router"
     ],
     "experiments": {
+      "tsconfigPaths": true,
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "72c3d2d5-a486-467b-9198-eaba819eaf8c"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/72c3d2d5-a486-467b-9198-eaba819eaf8c"
     }
   }
 }
