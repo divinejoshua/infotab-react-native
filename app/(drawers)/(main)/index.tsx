@@ -15,17 +15,25 @@ export default function TabOneScreen() {
 
    // Get theme 
    const currentTheme = useColorScheme();
-   const backgroundColor = currentTheme === "light" ? Colors.light.background :Colors.dark.background
+    const borderColor = currentTheme === "light" ? Colors.light.borderColor :Colors.dark.borderColor
+    const backgroundColor = currentTheme === "light" ? Colors.light.background :Colors.dark.background
 
   // Navigation 
    const navigation = useNavigation();
+
+  //  Bottom sheet state 
+   const [isOpenBottomSheet, setIsOpenBottomSheet] = useState<boolean>(false);
 
 
 
 
 
    return (
-    <SafeAreaView style={[styles.container, {backgroundColor: backgroundColor, flex: 1,}]} > 
+    <SafeAreaView 
+      style={[styles.container, 
+        {backgroundColor: backgroundColor, flex: 1}
+      ]}
+    > 
 
     {/* Drawer options  */}
       <Drawer.Screen
@@ -46,16 +54,21 @@ export default function TabOneScreen() {
         }}
       />
 
-
       <Text style={styles.title}>Tab One</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <EditScreenInfo path="app/(tabs)/index.tsx" />
 
 
       {/* Bottom sheet  */}
-      <BottomSheet/>      
+      {/* Pass the values of the bottom sheet if it is open or not  */}
 
-      
+      {/* Overlay  */}
+      {isOpenBottomSheet ??  <View style={styles.overlay}><Text>hey</Text></View>}
+     
+
+      <BottomSheet isOpen={isOpenBottomSheet} setIsOpen={setIsOpenBottomSheet}/>     
+
+
     </SafeAreaView>
   );
 }
@@ -75,4 +88,15 @@ const styles = StyleSheet.create({
     height: 1,
     width: '80%',
   },
+
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Example overlay color
+  },
+
+
 });

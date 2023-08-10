@@ -9,10 +9,9 @@ import { Button, Pressable, StyleSheet, useColorScheme, useWindowDimensions } fr
 import Colors from '../constants/Colors';
 import { Switch } from 'react-native-gesture-handler';
 import { AntDesign, Entypo } from '@expo/vector-icons';
+import { StatusBar } from 'expo-status-bar';
 
-export default function BottomSheet() {
-
-
+export default function BottomSheet({isOpen, setIsOpen} : {isOpen : boolean, setIsOpen : Function}) {
 
     // Get theme 
     const currentTheme = useColorScheme();
@@ -30,7 +29,7 @@ export default function BottomSheet() {
     const [device, setDevice] = useState(false);
     const { width } = useWindowDimensions();
     const [theme, setTheme] = useState("dim");
-    const [isOpen, setIsOpen] = useState(false);
+    // const [isOpen, setIsOpen] = useState(false);
 
 
         // Handle bottom sheet over lay 
@@ -46,12 +45,16 @@ export default function BottomSheet() {
 
 
   return (
+
+    
     <BottomSheetModalProvider>
 
             {/* Bottom sheet handler button  */}
-            <TouchableOpacity style={[styles.presentButton]} onPress={handlePresentModal}>
+            <TouchableOpacity style={[styles.presentButton]} onPress={() =>handlePresentModal()}>
                 <Text style={styles.buttonText}>Open bottom sheet </Text>
             </TouchableOpacity>
+
+            <StatusBar style="auto" />
 
             {/* Bottom sheet Modal  */}
             <BottomSheetModal
@@ -137,7 +140,6 @@ export default function BottomSheet() {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: "gray",
       alignItems: "center",
       justifyContent: "center",
     },
