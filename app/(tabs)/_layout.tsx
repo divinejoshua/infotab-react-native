@@ -1,9 +1,9 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Link, Tabs } from 'expo-router';
-import { Pressable, useColorScheme } from 'react-native';
+import { Image, Pressable, TouchableOpacity, useColorScheme } from 'react-native';
 import { Drawer } from 'expo-router/drawer';
 
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { DrawerContentScrollView, DrawerItem, DrawerItemList, createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 
 import Colors from '../../constants/Colors';
@@ -11,10 +11,16 @@ import Colors from '../../constants/Colors';
 import TabOneScreen from './index'
 import TabTwoScreen from './two'
 import { Text, View } from '../../components/Themed';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
  */
+
+// const Drawer = createDrawerNavigator();
+
+
+
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
   color: string;
@@ -22,12 +28,27 @@ function TabBarIcon(props: {
   return <FontAwesome size={20} style={{ marginBottom: -3 }} {...props} />;
 }
 
+// Custom drawer component 
+function CustomDrawerContent(props : any) {
+  return (
+    <>
+    <SafeAreaView>
+      <Text>All is well</Text>
+    </SafeAreaView>
+    <DrawerContentScrollView >
+            <DrawerItemList {...props}/>
+    </DrawerContentScrollView>
+    <SafeAreaView>
+      <Text>Footer</Text> 
+    </SafeAreaView>
+    </>
+  );
+}
 
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
-  // const Drawer = createDrawerNavigator();
 
   return (
     // <Tabs
@@ -66,15 +87,49 @@ export default function TabLayout() {
 
     // Added navigaton drawers 
   //   <NavigationContainer independent={true}>
-  //       <Drawer.Navigator initialRouteName="Home">
+  //       <Drawer.Navigator initialRouteName="Home"
+  //       drawerContent={(props) => <CustomDrawerContent {...props} />}
+
+  //           screenOptions={{
+  //               drawerActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+  //               drawerStyle: {
+  //                 // backgroundColor: '#c6cbef', //Set Drawer background
+  //                 width: '70%', //Set Drawer width
+  //               },
+  //               headerStyle: {
+  //                 // backgroundColor: '#f4511e', //Set Header color
+  //               },
+  //               // headerTintColor: '#fff', //Set Header text color
+  //               headerTitleStyle: {
+  //                 fontWeight: 'bold', //Set Header text style
+  //               }
+  //             }}
+  //         >
   //         <Drawer.Screen name="Home" component={TabOneScreen} />
   //         <Drawer.Screen name="Notifications" component={TabTwoScreen} />
   //       </Drawer.Navigator>
   // </NavigationContainer>
 
-  <Drawer
-    screenOptions={{
-        drawerActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+
+// Drawer from expo router 
+    <Drawer
+      drawerContent={(props) =>(
+        <CustomDrawerContent {...props}/>
+      )}
+      screenOptions={({ navigation }) => ({
+        headerLeft: (props) =>
+        ( 
+          <TouchableOpacity onPress={() =>navigation.toggleDrawer()}>
+            <Image 
+              source={require("../../assets/images/profile.jpg")} 
+              resizeMode='contain' 
+              style={{width:30, height:30, marginLeft: 20, borderRadius:100}}
+              
+              />
+            </TouchableOpacity>
+        ),
+        headerShadowVisible: false,
+        // drawerActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         drawerStyle: {
           // backgroundColor: '#c6cbef', //Set Drawer background
           width: '70%', //Set Drawer width
@@ -86,10 +141,11 @@ export default function TabLayout() {
         headerTitleStyle: {
           fontWeight: 'bold', //Set Header text style
         }
-      }}
+      })}
   >
 
-    <Drawer.Screen
+    {/* Drawer screens */}
+      <Drawer.Screen
           name="index"
           options={{
             title: 'Home',
