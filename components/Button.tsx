@@ -3,7 +3,7 @@ import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 
-export default function Button({ title, onPress, icon, color } : { title : string, onPress : Function, icon : any, color : string }) {
+export default function CameraButtonContols({ title, onPress, icon, color } : { title? : string, onPress : Function, icon? : any, color? : string }) {
   return (
     <TouchableOpacity onPress={() =>onPress()} style={styles.button}>
       <Entypo name={icon} size={28} color={color ? color : '#f1f1f1'} />
