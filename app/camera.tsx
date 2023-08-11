@@ -37,7 +37,7 @@ export default function App() {
       try {
         //@ts-ignore: true 
         const data = await cameraRef.current.takePictureAsync();
-        console.log(data);
+        // console.log(data);
 
         // Set image 
         setImage(data.uri);
