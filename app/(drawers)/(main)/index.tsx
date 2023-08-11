@@ -9,6 +9,8 @@ import { useNavigation,  } from '@react-navigation/native';
 
 import { useRef, useState } from 'react';
 import BottomSheet from '../../../components/BottomSheet';
+import { Link, router } from 'expo-router';
+import { FontAwesome } from '@expo/vector-icons';
 
 
 export default function TabOneScreen() {
@@ -50,6 +52,25 @@ export default function TabOneScreen() {
                 />
             </TouchableOpacity>
           ),
+
+
+        // Camera button 
+          headerRight: () => (
+            <Link href="/camera" asChild>
+              <Pressable>
+                {({ pressed }) => (
+                  <FontAwesome
+                    name="camera"
+                    size={20}
+                    color={Colors[currentTheme ?? 'light'].text}
+                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                  />
+                )}
+              </Pressable>
+            </Link>
+            
+          ),
+  
           headerTitle: "Home",
         }}
       />
@@ -63,7 +84,7 @@ export default function TabOneScreen() {
 
       <BottomSheet isOpen={isOpenBottomSheet} setIsOpen={setIsOpenBottomSheet}/>     
 
-
+      
     </SafeAreaView>
   );
 }
@@ -83,7 +104,6 @@ const styles = StyleSheet.create({
     height: 1,
     width: '80%',
   },
-
 
 
 });
