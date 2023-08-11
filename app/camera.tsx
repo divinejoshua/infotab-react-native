@@ -5,6 +5,7 @@ import { Camera, CameraType } from 'expo-camera';
 import * as MediaLibrary from 'expo-media-library';
 // import { manipulateAsync, FlipType, SaveFormat } from 'expo-image-manipulator';
 import CameraButtonContols from '../components/Button';
+import { router } from 'expo-router';
 
 export default function App() {
 
@@ -90,39 +91,65 @@ export default function App() {
             style={{
               flexDirection: 'row',
               justifyContent: 'space-between',
-              paddingHorizontal: 30,
+              paddingHorizontal: 10,
+              marginTop:10,
             }}
-          >
-            {/* Change camera tpye (Front / Back ) */}
-            <CameraButtonContols
-              title=""
-              color=''
-              icon="retweet"
-              onPress={() => {
-                setType(
-                  type === CameraType.back ? CameraType.front : CameraType.back
-                );
-              }}
-            />
+              >
+                {/* Back button  */}
+                <View>
+                  <Text>
+                    <CameraButtonContols
+                      title=""
+                      color=''
+                      icon="chevron-left"
+                      onPress={() => {
+                        router.back()
+                      }}
+                    />
 
-            {/* Change flash mode (Front / Back) */}
-            <CameraButtonContols
-              onPress={() =>
-                setFlash(
-                  // @ts-ignore: true 
-                  flash === Camera.Constants.FlashMode.off
-                  // @ts-ignore: true 
-                    ? Camera.Constants.FlashMode.on
-                    // @ts-ignore: true 
-                    : Camera.Constants.FlashMode.off
-                )
-              }
-              icon="flash"
-              // @ts-ignore: true 
-              color={flash === Camera.Constants.FlashMode.off ? 'gray' : '#fff'}
-            />
+                  </Text>
+                </View>
+                
+
+                {/* Control buttons  */}
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    gap:10
+                  }}
+                >
+                    {/* Change camera tpye (Front / Back ) */}
+                    <CameraButtonContols
+                      title=""
+                      color=''
+                      icon="retweet"
+                      onPress={() => {
+                        setType(
+                          type === CameraType.back ? CameraType.front : CameraType.back
+                        );
+                      }}
+                    />
+
+                    {/* Change flash mode (Front / Back) */}
+                    <CameraButtonContols
+                      onPress={() =>
+                        setFlash(
+                          // @ts-ignore: true 
+                          flash === Camera.Constants.FlashMode.off
+                          // @ts-ignore: true 
+                            ? Camera.Constants.FlashMode.on
+                            // @ts-ignore: true 
+                            : Camera.Constants.FlashMode.off
+                        )
+                      }
+                      icon="flash"
+                      // @ts-ignore: true 
+                      color={flash === Camera.Constants.FlashMode.off ? 'gray' : '#fff'}
+                    />
+                </View>
+
           </View>
-
 
         </Camera>
       ) 
