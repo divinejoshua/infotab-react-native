@@ -61,10 +61,6 @@ export default function TabOneScreen() {
       {/* Bottom sheet  */}
       {/* Pass the values of the bottom sheet if it is open or not  */}
 
-      {/* Overlay  */}
-      <View style={[ isOpenBottomSheet ? styles.overlay : {}]}></View>
-     
-
       <BottomSheet isOpen={isOpenBottomSheet} setIsOpen={setIsOpenBottomSheet}/>     
 
 
@@ -88,14 +84,6 @@ const styles = StyleSheet.create({
     width: '80%',
   },
 
-  overlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Example overlay color
-  },
 
 
 });

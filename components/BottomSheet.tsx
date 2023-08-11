@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState,  } from 'react';
 import { View, Text } from  '../components/Themed'
 import {
     BottomSheetModal,
@@ -27,7 +27,7 @@ export default function BottomSheet({isOpen, setIsOpen} : {isOpen : boolean, set
     // Data 
     const [darkmode, setDarkmode] = useState(false);
     const [device, setDevice] = useState(false);
-    const { width } = useWindowDimensions();
+    const { width, height } = useWindowDimensions();
     const [theme, setTheme] = useState("dim");
     // const [isOpen, setIsOpen] = useState(false);
 
@@ -45,7 +45,10 @@ export default function BottomSheet({isOpen, setIsOpen} : {isOpen : boolean, set
 
 
   return (
-    <BottomSheetModalProvider>
+      <>
+       
+        
+        <BottomSheetModalProvider>
             {/* Bottom sheet handler button  */}
             <TouchableOpacity style={[styles.presentButton]} onPress={() =>handlePresentModal()}>
                 <Text style={styles.buttonText}>Open bottom sheet </Text>
@@ -58,7 +61,7 @@ export default function BottomSheet({isOpen, setIsOpen} : {isOpen : boolean, set
                 ref={bottomSheetModalRef}
                 index={1}
                 snapPoints={snapPoints}
-                backgroundStyle={{ borderRadius: 10, backgroundColor: backgroundColor }}
+                backgroundStyle={[styles.bottomSheetModalStyle, {backgroundColor : backgroundColor}]}
                 handleIndicatorStyle={{ backgroundColor: borderColor }} // Customize the indicator style
                 onDismiss={() => setIsOpen(false)}
             >
@@ -126,9 +129,8 @@ export default function BottomSheet({isOpen, setIsOpen} : {isOpen : boolean, set
                             </Pressable>
                     </View>
             </BottomSheetModal>
-  </BottomSheetModalProvider>
-
-
+          </BottomSheetModalProvider>
+      </>
 
   )
 }
@@ -139,7 +141,22 @@ const styles = StyleSheet.create({
       flex: 1,
       alignItems: "center",
       justifyContent: "center",
+      padding: 24,
     },
+
+    bottomSheetModalStyle:{
+      borderRadius: 0, 
+      shadowColor: "#000",
+      shadowOffset: {
+        width: 0,
+        height: 12,
+      },
+      shadowOpacity: 0.58,
+      shadowRadius: 16.00,
+
+      elevation: 24,
+    },
+
     contentContainer: {
       flex: 1,
       alignItems: "center",
@@ -183,5 +200,7 @@ const styles = StyleSheet.create({
     buttonText:{
         color:"#fff",
         fontWeight: "bold",
-    }
+    },
+
+  
   });
