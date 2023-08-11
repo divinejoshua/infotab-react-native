@@ -135,7 +135,7 @@ export default function App() {
         <Image source={{ uri: image }} style={
           [styles.photograph, 
             // If front camera, then change the scale of how the image is displayed
-            CameraType.back? {transform: [{scaleX: -1}]} : {transform: [{scaleX: 1}]}
+            type === CameraType.front ? {transform: [{scaleX: -1}]} : {}
           ]
         } />
       )}
