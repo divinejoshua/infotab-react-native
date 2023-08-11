@@ -47,6 +47,11 @@ export default function TabTwoScreen() {
       <Text style={styles.title}>Tab Two</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <EditScreenInfo path="app/(tabs)/two.tsx" />
+
+        {/* Bottom sheet handler button  */}
+        <TouchableOpacity style={[styles.cameraButton]} onPress={() => console.log("worked")}>
+            <Text style={styles.buttonText}>Open button</Text>
+        </TouchableOpacity>
     </SafeAreaView>
   );
 }
@@ -66,4 +71,19 @@ const styles = StyleSheet.create({
     height: 1,
     width: '80%',
   },
+  cameraButton : {
+    width: "70%",
+    fontSize : 15,
+    height: 40,
+    borderRadius : 100,
+    backgroundColor : "#3b82f6",
+    color : "#fff",
+    justifyContent: 'center',
+    alignItems: 'center',
+},
+
+buttonText:{
+    color:"#fff",
+    fontWeight: "bold",
+},
 });

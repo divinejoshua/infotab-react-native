@@ -51,6 +51,7 @@ function RootLayoutNav() {
       <Stack>
         <Stack.Screen name="(drawers)" options={{ headerShown: false }} />
         <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+        <Stack.Screen name="camera" options={{ headerShown: false }} />
       </Stack>
     </ThemeProvider>
   );
